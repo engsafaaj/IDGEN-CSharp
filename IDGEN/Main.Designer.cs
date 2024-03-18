@@ -28,27 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             flowLayoutPanel1 = new FlowLayoutPanel();
-            button1 = new Button();
-            button2 = new Button();
-            button3 = new Button();
-            button4 = new Button();
-            button5 = new Button();
-            button6 = new Button();
+            buttonHome = new Button();
+            buttonUsers = new Button();
+            buttonStudents = new Button();
+            buttonLogs = new Button();
+            buttonSettings = new Button();
+            buttonAbout = new Button();
             panelContainer = new Panel();
+            toolTip1 = new ToolTip(components);
             flowLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
             // flowLayoutPanel1
             // 
             flowLayoutPanel1.AutoScroll = true;
-            flowLayoutPanel1.Controls.Add(button1);
-            flowLayoutPanel1.Controls.Add(button2);
-            flowLayoutPanel1.Controls.Add(button3);
-            flowLayoutPanel1.Controls.Add(button4);
-            flowLayoutPanel1.Controls.Add(button5);
-            flowLayoutPanel1.Controls.Add(button6);
+            flowLayoutPanel1.Controls.Add(buttonHome);
+            flowLayoutPanel1.Controls.Add(buttonUsers);
+            flowLayoutPanel1.Controls.Add(buttonStudents);
+            flowLayoutPanel1.Controls.Add(buttonLogs);
+            flowLayoutPanel1.Controls.Add(buttonSettings);
+            flowLayoutPanel1.Controls.Add(buttonAbout);
             flowLayoutPanel1.Dock = DockStyle.Bottom;
             flowLayoutPanel1.Location = new Point(0, 601);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -56,83 +58,95 @@
             flowLayoutPanel1.Size = new Size(1062, 72);
             flowLayoutPanel1.TabIndex = 0;
             // 
-            // button1
+            // buttonHome
             // 
-            button1.Font = new Font("Cairo", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            button1.Image = Properties.Resources.icons8_home_32px_2;
-            button1.ImageAlign = ContentAlignment.MiddleLeft;
-            button1.Location = new Point(887, 10);
-            button1.Margin = new Padding(5);
-            button1.Name = "button1";
-            button1.Size = new Size(160, 55);
-            button1.TabIndex = 0;
-            button1.Text = "الرئيسة";
-            button1.UseVisualStyleBackColor = true;
+            buttonHome.Font = new Font("Cairo", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonHome.Image = Properties.Resources.icons8_home_32px_2;
+            buttonHome.ImageAlign = ContentAlignment.MiddleLeft;
+            buttonHome.Location = new Point(887, 10);
+            buttonHome.Margin = new Padding(5);
+            buttonHome.Name = "buttonHome";
+            buttonHome.Size = new Size(160, 55);
+            buttonHome.TabIndex = 0;
+            buttonHome.Text = "الرئيسة";
+            toolTip1.SetToolTip(buttonHome, "الصفحة الرئيسية");
+            buttonHome.UseVisualStyleBackColor = true;
+            buttonHome.Click += buttonHome_Click;
             // 
-            // button2
+            // buttonUsers
             // 
-            button2.Font = new Font("Cairo", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            button2.Image = Properties.Resources.icons8_university_32px;
-            button2.ImageAlign = ContentAlignment.MiddleLeft;
-            button2.Location = new Point(717, 10);
-            button2.Margin = new Padding(5);
-            button2.Name = "button2";
-            button2.Size = new Size(160, 55);
-            button2.TabIndex = 1;
-            button2.Text = "الكليات";
-            button2.UseVisualStyleBackColor = true;
+            buttonUsers.Font = new Font("Cairo", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonUsers.Image = Properties.Resources.icons8_university_32px;
+            buttonUsers.ImageAlign = ContentAlignment.MiddleLeft;
+            buttonUsers.Location = new Point(717, 10);
+            buttonUsers.Margin = new Padding(5);
+            buttonUsers.Name = "buttonUsers";
+            buttonUsers.Size = new Size(160, 55);
+            buttonUsers.TabIndex = 1;
+            buttonUsers.Text = "الكليات";
+            toolTip1.SetToolTip(buttonUsers, "إدارة الكليات والاقسام العلمية");
+            buttonUsers.UseVisualStyleBackColor = true;
+            buttonUsers.Click += buttonUsers_Click;
             // 
-            // button3
+            // buttonStudents
             // 
-            button3.Font = new Font("Cairo", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            button3.Image = Properties.Resources.icons8_students_32px;
-            button3.ImageAlign = ContentAlignment.MiddleLeft;
-            button3.Location = new Point(547, 10);
-            button3.Margin = new Padding(5);
-            button3.Name = "button3";
-            button3.Size = new Size(160, 55);
-            button3.TabIndex = 2;
-            button3.Text = "الطلبة";
-            button3.UseVisualStyleBackColor = true;
+            buttonStudents.Font = new Font("Cairo", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonStudents.Image = Properties.Resources.icons8_students_32px;
+            buttonStudents.ImageAlign = ContentAlignment.MiddleLeft;
+            buttonStudents.Location = new Point(547, 10);
+            buttonStudents.Margin = new Padding(5);
+            buttonStudents.Name = "buttonStudents";
+            buttonStudents.Size = new Size(160, 55);
+            buttonStudents.TabIndex = 2;
+            buttonStudents.Text = "الطلبة";
+            toolTip1.SetToolTip(buttonStudents, "إدارة بيانات الطلبة");
+            buttonStudents.UseVisualStyleBackColor = true;
+            buttonStudents.Click += buttonStudents_Click;
             // 
-            // button4
+            // buttonLogs
             // 
-            button4.Font = new Font("Cairo", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            button4.Image = Properties.Resources.icons8_edit_property_32px;
-            button4.ImageAlign = ContentAlignment.MiddleLeft;
-            button4.Location = new Point(377, 10);
-            button4.Margin = new Padding(5);
-            button4.Name = "button4";
-            button4.Size = new Size(160, 55);
-            button4.TabIndex = 3;
-            button4.Text = "السجل";
-            button4.UseVisualStyleBackColor = true;
+            buttonLogs.Font = new Font("Cairo", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonLogs.Image = Properties.Resources.icons8_edit_property_32px;
+            buttonLogs.ImageAlign = ContentAlignment.MiddleLeft;
+            buttonLogs.Location = new Point(377, 10);
+            buttonLogs.Margin = new Padding(5);
+            buttonLogs.Name = "buttonLogs";
+            buttonLogs.Size = new Size(160, 55);
+            buttonLogs.TabIndex = 3;
+            buttonLogs.Text = "السجل";
+            toolTip1.SetToolTip(buttonLogs, "سجل حركة النظام");
+            buttonLogs.UseVisualStyleBackColor = true;
+            buttonLogs.Click += buttonLogs_Click;
             // 
-            // button5
+            // buttonSettings
             // 
-            button5.Font = new Font("Cairo", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            button5.Image = Properties.Resources.icons8_settings_32px_1;
-            button5.ImageAlign = ContentAlignment.MiddleLeft;
-            button5.Location = new Point(207, 10);
-            button5.Margin = new Padding(5);
-            button5.Name = "button5";
-            button5.Size = new Size(160, 55);
-            button5.TabIndex = 4;
-            button5.Text = "الاعدادات";
-            button5.UseVisualStyleBackColor = true;
+            buttonSettings.Font = new Font("Cairo", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonSettings.Image = Properties.Resources.icons8_settings_32px_1;
+            buttonSettings.ImageAlign = ContentAlignment.MiddleLeft;
+            buttonSettings.Location = new Point(207, 10);
+            buttonSettings.Margin = new Padding(5);
+            buttonSettings.Name = "buttonSettings";
+            buttonSettings.Size = new Size(160, 55);
+            buttonSettings.TabIndex = 4;
+            buttonSettings.Text = "الاعدادات";
+            toolTip1.SetToolTip(buttonSettings, "اعدادات النظام العامة");
+            buttonSettings.UseVisualStyleBackColor = true;
+            buttonSettings.Click += buttonSettings_Click;
             // 
-            // button6
+            // buttonAbout
             // 
-            button6.Font = new Font("Cairo", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            button6.Image = Properties.Resources.icons8_about_32px;
-            button6.ImageAlign = ContentAlignment.MiddleLeft;
-            button6.Location = new Point(37, 10);
-            button6.Margin = new Padding(5);
-            button6.Name = "button6";
-            button6.Size = new Size(160, 55);
-            button6.TabIndex = 5;
-            button6.Text = "حول";
-            button6.UseVisualStyleBackColor = true;
+            buttonAbout.Font = new Font("Cairo", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonAbout.Image = Properties.Resources.icons8_about_32px;
+            buttonAbout.ImageAlign = ContentAlignment.MiddleLeft;
+            buttonAbout.Location = new Point(37, 10);
+            buttonAbout.Margin = new Padding(5);
+            buttonAbout.Name = "buttonAbout";
+            buttonAbout.Size = new Size(160, 55);
+            buttonAbout.TabIndex = 5;
+            buttonAbout.Text = "حول";
+            toolTip1.SetToolTip(buttonAbout, "حول النظام, المساعدة , الخصوصية");
+            buttonAbout.UseVisualStyleBackColor = true;
+            buttonAbout.Click += buttonAbout_Click;
             // 
             // panelContainer
             // 
@@ -158,6 +172,7 @@
             RightToLeftLayout = true;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "IDGEN";
+            WindowState = FormWindowState.Maximized;
             FormClosing += Main_FormClosing;
             flowLayoutPanel1.ResumeLayout(false);
             ResumeLayout(false);
@@ -166,12 +181,13 @@
         #endregion
 
         private FlowLayoutPanel flowLayoutPanel1;
-        private Panel panelContainer;
-        private Button button1;
-        private Button button2;
-        private Button button3;
-        private Button button4;
-        private Button button5;
-        private Button button6;
+        private Button buttonHome;
+        private Button buttonUsers;
+        private Button buttonStudents;
+        private Button buttonLogs;
+        private Button buttonSettings;
+        private Button buttonAbout;
+        public Panel panelContainer;
+        private ToolTip toolTip1;
     }
 }
