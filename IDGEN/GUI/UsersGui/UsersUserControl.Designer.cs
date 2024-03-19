@@ -43,11 +43,12 @@
             SearchPanel = new Panel();
             textBoxSearch = new TextBox();
             buttonSearch = new Button();
-            dataGridView1 = new DataGridView();
+            mainDataGridView = new DataGridView();
             toolTip1 = new ToolTip(components);
+            labelNoData = new Label();
             flowLayoutNavBar.SuspendLayout();
             SearchPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)mainDataGridView).BeginInit();
             SuspendLayout();
             // 
             // flowLayoutNavBar
@@ -182,15 +183,15 @@
             buttonSearch.UseVisualStyleBackColor = false;
             buttonSearch.Click += buttonSearch_Click;
             // 
-            // dataGridView1
+            // mainDataGridView
             // 
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.AllowUserToDeleteRows = false;
+            mainDataGridView.AllowUserToAddRows = false;
+            mainDataGridView.AllowUserToDeleteRows = false;
             dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dataGridView1.BackgroundColor = Color.White;
+            mainDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
+            mainDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            mainDataGridView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            mainDataGridView.BackgroundColor = Color.White;
             dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle7.BackColor = SystemColors.Control;
             dataGridViewCellStyle7.Font = new Font("Cairo", 12F, FontStyle.Regular, GraphicsUnit.Point);
@@ -198,8 +199,8 @@
             dataGridViewCellStyle7.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            mainDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            mainDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle8.BackColor = SystemColors.Window;
             dataGridViewCellStyle8.Font = new Font("Cairo", 12F, FontStyle.Regular, GraphicsUnit.Point);
@@ -207,11 +208,11 @@
             dataGridViewCellStyle8.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
-            dataGridView1.DefaultCellStyle = dataGridViewCellStyle8;
-            dataGridView1.Dock = DockStyle.Fill;
-            dataGridView1.Location = new Point(0, 72);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.ReadOnly = true;
+            mainDataGridView.DefaultCellStyle = dataGridViewCellStyle8;
+            mainDataGridView.Dock = DockStyle.Fill;
+            mainDataGridView.Location = new Point(0, 72);
+            mainDataGridView.Name = "mainDataGridView";
+            mainDataGridView.ReadOnly = true;
             dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle9.BackColor = SystemColors.Control;
             dataGridViewCellStyle9.Font = new Font("Cairo", 12F, FontStyle.Regular, GraphicsUnit.Point);
@@ -219,19 +220,33 @@
             dataGridViewCellStyle9.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle9.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle9.WrapMode = DataGridViewTriState.True;
-            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
-            dataGridView1.RowHeadersWidth = 51;
+            mainDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            mainDataGridView.RowHeadersWidth = 51;
             dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle10;
-            dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(1181, 620);
-            dataGridView1.TabIndex = 2;
+            mainDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle10;
+            mainDataGridView.RowTemplate.Height = 29;
+            mainDataGridView.Size = new Size(1181, 620);
+            mainDataGridView.TabIndex = 2;
+            // 
+            // labelNoData
+            // 
+            labelNoData.Anchor = AnchorStyles.None;
+            labelNoData.AutoSize = true;
+            labelNoData.BackColor = Color.White;
+            labelNoData.Font = new Font("Cairo", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            labelNoData.ForeColor = SystemColors.ActiveBorder;
+            labelNoData.Location = new Point(524, 370);
+            labelNoData.Name = "labelNoData";
+            labelNoData.Size = new Size(132, 37);
+            labelNoData.TabIndex = 6;
+            labelNoData.Text = "لا يوجد بيانات";
             // 
             // UsersUserControl
             // 
             AutoScaleDimensions = new SizeF(11F, 37F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(dataGridView1);
+            Controls.Add(labelNoData);
+            Controls.Add(mainDataGridView);
             Controls.Add(flowLayoutNavBar);
             Font = new Font("Cairo", 12F, FontStyle.Regular, GraphicsUnit.Point);
             Margin = new Padding(4, 6, 4, 6);
@@ -241,15 +256,16 @@
             flowLayoutNavBar.ResumeLayout(false);
             SearchPanel.ResumeLayout(false);
             SearchPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)mainDataGridView).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private FlowLayoutPanel flowLayoutNavBar;
         private Button buttonAdd;
-        private DataGridView dataGridView1;
+        private DataGridView mainDataGridView;
         private Button buttonEdit;
         private Button buttonDelete;
         private Button buttonExport;
@@ -258,5 +274,6 @@
         private TextBox textBoxSearch;
         private Button buttonSearch;
         private ToolTip toolTip1;
+        private Label labelNoData;
     }
 }
