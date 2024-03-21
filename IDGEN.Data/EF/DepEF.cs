@@ -10,18 +10,19 @@ using System.Threading.Tasks;
 
 namespace IDGEN.Data.EF
 {
-    public class CollegeEF : IDataHelper<Colleges>
+    public class DepEF : IDataHelper<CollegeDep>
     {
         private DataContext db;
-        public CollegeEF()
+        public DepEF()
         {
             db = new DataContext();
         }
-        public int Add(Colleges table)
+
+        public int Add(CollegeDep table)
         {
             try
             {
-                db.Colleges.Add(table);
+                db.CollegeDep.Add(table);
                 db.SaveChanges();
                 return 1;
             }
@@ -35,10 +36,10 @@ namespace IDGEN.Data.EF
         {
             try
             {
-                var college = Find(Id);
-                if (college != null)
+                var CollegeDep = Find(Id);
+                if (CollegeDep != null)
                 {
-                    db.Colleges.Remove(college);
+                    db.CollegeDep.Remove(CollegeDep);
                     db.SaveChanges();
                     return 1;
                 }
@@ -54,33 +55,33 @@ namespace IDGEN.Data.EF
             }
         }
 
-        public Colleges Find(int Id)
+        public CollegeDep Find(int Id)
         {
             try
             {
-                var college = db.Colleges.Find(Id);
-                if (college == null)
+                var CollegeDep = db.CollegeDep.Find(Id);
+                if (CollegeDep == null)
                 {
-                    return new Colleges();
+                    return new CollegeDep();
                 }
                 else
                 {
-                    return college;
+                    return CollegeDep;
                 }
             }
             catch
             {
-                return new Colleges();
+                return new CollegeDep();
             }
         }
 
-        public List<Colleges> GetAllData()
+        public List<CollegeDep> GetAllData()
         {
             try
             {
-                return db.Colleges.ToList();
+                return db.CollegeDep.ToList();
             }
-            catch { return new List<Colleges>(); }
+            catch { return new List<CollegeDep>(); }
         }
 
         public bool IsConAvailable()
@@ -94,31 +95,27 @@ namespace IDGEN.Data.EF
             catch { return false; }
         }
 
-        public List<Colleges> Search(string searchIteam)
+        public List<CollegeDep> Search(string searchIteam)
         {
             try
             {
-                return db.Colleges
+                return db.CollegeDep
                     .Where(x => x.Id.ToString() == searchIteam ||
-                    x.CollegeName.Contains(searchIteam) ||
-                    x.UserName.Contains(searchIteam) ||
-                    x.Password.Contains(searchIteam) ||
-                    x.Phone.Contains(searchIteam) ||
-                    x.Email.Contains(searchIteam) ||
-                    x.Details.Contains(searchIteam) ||
-                    x.CollegeCode == searchIteam
+                    x.DepName.Contains(searchIteam) ||
+                    x.DepCode.ToString() == searchIteam
+
                     )
                     .ToList();
             }
-            catch { return new List<Colleges>(); }
+            catch { return new List<CollegeDep>(); }
         }
 
-        public int Update(Colleges table)
+        public int Update(CollegeDep table)
         {
             try
             {
                 db = new DataContext();
-                db.Colleges.Update(table);
+                db.CollegeDep.Update(table);
                 db.SaveChanges();
                 return 1;
             }

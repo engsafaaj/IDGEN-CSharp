@@ -37,7 +37,7 @@ namespace IDGEN.Gui.GuiUsers
             DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             panel1 = new Panel();
             labelValidation = new Label();
-            buttonSave = new Button();
+            buttonCancel = new Button();
             buttonSaveAndClose = new Button();
             label1 = new Label();
             label5 = new Label();
@@ -62,10 +62,8 @@ namespace IDGEN.Gui.GuiUsers
             label7 = new Label();
             groupBox2 = new GroupBox();
             labelNoData = new Label();
-            mainDataGridView = new DataGridView();
             flowLayoutNavBar = new FlowLayoutPanel();
-            button1 = new Button();
-            buttonEdit = new Button();
+            buttonAdd = new Button();
             buttonDelete = new Button();
             textBoxDepCode = new TextBox();
             textBoxDepName = new TextBox();
@@ -75,18 +73,19 @@ namespace IDGEN.Gui.GuiUsers
             label24 = new Label();
             label25 = new Label();
             label26 = new Label();
+            mainDataGridView = new DataGridView();
             toolTip1 = new ToolTip(components);
             panel1.SuspendLayout();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)mainDataGridView).BeginInit();
             flowLayoutNavBar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)mainDataGridView).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.Controls.Add(labelValidation);
-            panel1.Controls.Add(buttonSave);
+            panel1.Controls.Add(buttonCancel);
             panel1.Controls.Add(buttonSaveAndClose);
             panel1.Dock = DockStyle.Bottom;
             panel1.Location = new Point(0, 610);
@@ -103,17 +102,18 @@ namespace IDGEN.Gui.GuiUsers
             labelValidation.TabIndex = 3;
             labelValidation.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // buttonSave
+            // buttonCancel
             // 
-            buttonSave.Image = Properties.Resources.icons8_save_32px;
-            buttonSave.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonSave.Location = new Point(14, 7);
-            buttonSave.Margin = new Padding(5);
-            buttonSave.Name = "buttonSave";
-            buttonSave.Size = new Size(202, 55);
-            buttonSave.TabIndex = 10;
-            buttonSave.Text = "احفظ واستمر";
-            buttonSave.UseVisualStyleBackColor = true;
+            buttonCancel.Image = Properties.Resources.icons8_Cancel_32px_1;
+            buttonCancel.ImageAlign = ContentAlignment.MiddleLeft;
+            buttonCancel.Location = new Point(14, 7);
+            buttonCancel.Margin = new Padding(5);
+            buttonCancel.Name = "buttonCancel";
+            buttonCancel.Size = new Size(202, 55);
+            buttonCancel.TabIndex = 10;
+            buttonCancel.Text = "الغاء الامر";
+            buttonCancel.UseVisualStyleBackColor = true;
+            buttonCancel.Click += buttonCancel_Click;
             // 
             // buttonSaveAndClose
             // 
@@ -126,6 +126,7 @@ namespace IDGEN.Gui.GuiUsers
             buttonSaveAndClose.TabIndex = 9;
             buttonSaveAndClose.Text = "حفظ";
             buttonSaveAndClose.UseVisualStyleBackColor = true;
+            buttonSaveAndClose.Click += buttonSaveAndClose_Click;
             // 
             // label1
             // 
@@ -238,7 +239,6 @@ namespace IDGEN.Gui.GuiUsers
             // 
             textBoxPassword.Location = new Point(16, 199);
             textBoxPassword.Name = "textBoxPassword";
-            textBoxPassword.PasswordChar = '*';
             textBoxPassword.Size = new Size(376, 45);
             textBoxPassword.TabIndex = 2;
             textBoxPassword.TextAlign = HorizontalAlignment.Center;
@@ -354,7 +354,6 @@ namespace IDGEN.Gui.GuiUsers
             // groupBox2
             // 
             groupBox2.Controls.Add(labelNoData);
-            groupBox2.Controls.Add(mainDataGridView);
             groupBox2.Controls.Add(flowLayoutNavBar);
             groupBox2.Controls.Add(textBoxDepCode);
             groupBox2.Controls.Add(textBoxDepName);
@@ -364,6 +363,7 @@ namespace IDGEN.Gui.GuiUsers
             groupBox2.Controls.Add(label24);
             groupBox2.Controls.Add(label25);
             groupBox2.Controls.Add(label26);
+            groupBox2.Controls.Add(mainDataGridView);
             groupBox2.Location = new Point(618, 12);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(502, 586);
@@ -383,56 +383,12 @@ namespace IDGEN.Gui.GuiUsers
             labelNoData.Size = new Size(132, 37);
             labelNoData.TabIndex = 7;
             labelNoData.Text = "لا يوجد بيانات";
-            // 
-            // mainDataGridView
-            // 
-            mainDataGridView.AllowUserToAddRows = false;
-            mainDataGridView.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            mainDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            mainDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            mainDataGridView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            mainDataGridView.BackgroundColor = Color.White;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = SystemColors.Control;
-            dataGridViewCellStyle2.Font = new Font("Cairo", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            mainDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            mainDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = SystemColors.Window;
-            dataGridViewCellStyle3.Font = new Font("Cairo", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            mainDataGridView.DefaultCellStyle = dataGridViewCellStyle3;
-            mainDataGridView.Location = new Point(15, 44);
-            mainDataGridView.Name = "mainDataGridView";
-            mainDataGridView.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = SystemColors.Control;
-            dataGridViewCellStyle4.Font = new Font("Cairo", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            mainDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            mainDataGridView.RowHeadersWidth = 51;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            mainDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle5;
-            mainDataGridView.RowTemplate.Height = 29;
-            mainDataGridView.Size = new Size(469, 296);
-            mainDataGridView.TabIndex = 4;
+            labelNoData.Visible = false;
             // 
             // flowLayoutNavBar
             // 
             flowLayoutNavBar.AutoScroll = true;
-            flowLayoutNavBar.Controls.Add(button1);
-            flowLayoutNavBar.Controls.Add(buttonEdit);
+            flowLayoutNavBar.Controls.Add(buttonAdd);
             flowLayoutNavBar.Controls.Add(buttonDelete);
             flowLayoutNavBar.Dock = DockStyle.Bottom;
             flowLayoutNavBar.Location = new Point(3, 511);
@@ -441,40 +397,27 @@ namespace IDGEN.Gui.GuiUsers
             flowLayoutNavBar.Size = new Size(496, 72);
             flowLayoutNavBar.TabIndex = 3;
             // 
-            // button1
+            // buttonAdd
             // 
-            button1.Font = new Font("Cairo", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            button1.Image = Properties.Resources.icons8_add_32px;
-            button1.ImageAlign = ContentAlignment.MiddleLeft;
-            button1.Location = new Point(341, 10);
-            button1.Margin = new Padding(5);
-            button1.Name = "button1";
-            button1.Size = new Size(140, 50);
-            button1.TabIndex = 0;
-            button1.Text = "اضافة";
-            toolTip1.SetToolTip(button1, "اضافة قسم جديد");
-            button1.UseVisualStyleBackColor = true;
-            // 
-            // buttonEdit
-            // 
-            buttonEdit.Font = new Font("Cairo", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonEdit.Image = Properties.Resources.icons8_edit_32px;
-            buttonEdit.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonEdit.Location = new Point(191, 10);
-            buttonEdit.Margin = new Padding(5);
-            buttonEdit.Name = "buttonEdit";
-            buttonEdit.Size = new Size(140, 50);
-            buttonEdit.TabIndex = 1;
-            buttonEdit.Text = "تعديل";
-            toolTip1.SetToolTip(buttonEdit, "انقر دبل كلك ايسر على القسم لتعديله");
-            buttonEdit.UseVisualStyleBackColor = true;
+            buttonAdd.Font = new Font("Cairo", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonAdd.Image = Properties.Resources.icons8_add_32px;
+            buttonAdd.ImageAlign = ContentAlignment.MiddleLeft;
+            buttonAdd.Location = new Point(341, 10);
+            buttonAdd.Margin = new Padding(5);
+            buttonAdd.Name = "buttonAdd";
+            buttonAdd.Size = new Size(140, 50);
+            buttonAdd.TabIndex = 0;
+            buttonAdd.Text = "اضافة";
+            toolTip1.SetToolTip(buttonAdd, "اضافة قسم جديد");
+            buttonAdd.UseVisualStyleBackColor = true;
+            buttonAdd.Click += buttonAdd_Click;
             // 
             // buttonDelete
             // 
             buttonDelete.Font = new Font("Cairo", 12F, FontStyle.Regular, GraphicsUnit.Point);
             buttonDelete.Image = Properties.Resources.icons8_Delete_32px;
             buttonDelete.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonDelete.Location = new Point(41, 10);
+            buttonDelete.Location = new Point(191, 10);
             buttonDelete.Margin = new Padding(5);
             buttonDelete.Name = "buttonDelete";
             buttonDelete.Size = new Size(140, 50);
@@ -482,6 +425,7 @@ namespace IDGEN.Gui.GuiUsers
             buttonDelete.Text = "حذف";
             toolTip1.SetToolTip(buttonDelete, "حذف القسم المحدد");
             buttonDelete.UseVisualStyleBackColor = true;
+            buttonDelete.Click += buttonDelete_Click;
             // 
             // textBoxDepCode
             // 
@@ -489,9 +433,9 @@ namespace IDGEN.Gui.GuiUsers
             textBoxDepCode.Name = "textBoxDepCode";
             textBoxDepCode.Size = new Size(331, 45);
             textBoxDepCode.TabIndex = 8;
-            textBoxDepCode.Text = "0";
+            textBoxDepCode.Text = "00";
             textBoxDepCode.TextAlign = HorizontalAlignment.Center;
-            toolTip1.SetToolTip(textBoxDepCode, "رمز القسم متكون من مرتبة واحدة");
+            toolTip1.SetToolTip(textBoxDepCode, "رمز القسم متكون من مرتبتين");
             textBoxDepCode.TextChanged += textBox6_TextChanged;
             textBoxDepCode.Enter += textBox6_Enter;
             // 
@@ -562,11 +506,56 @@ namespace IDGEN.Gui.GuiUsers
             label26.TabIndex = 0;
             label26.Text = "اسم القسم";
             // 
+            // mainDataGridView
+            // 
+            mainDataGridView.AllowUserToAddRows = false;
+            mainDataGridView.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            mainDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            mainDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            mainDataGridView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            mainDataGridView.BackgroundColor = Color.White;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = SystemColors.Control;
+            dataGridViewCellStyle2.Font = new Font("Cairo", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            mainDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            mainDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = SystemColors.Window;
+            dataGridViewCellStyle3.Font = new Font("Cairo", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            mainDataGridView.DefaultCellStyle = dataGridViewCellStyle3;
+            mainDataGridView.Location = new Point(15, 44);
+            mainDataGridView.Name = "mainDataGridView";
+            mainDataGridView.ReadOnly = true;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = SystemColors.Control;
+            dataGridViewCellStyle4.Font = new Font("Cairo", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            mainDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            mainDataGridView.RowHeadersWidth = 51;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            mainDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            mainDataGridView.RowTemplate.Height = 29;
+            mainDataGridView.Size = new Size(469, 312);
+            mainDataGridView.TabIndex = 9;
+            // 
             // AddUserForm
             // 
             AutoScaleDimensions = new SizeF(11F, 37F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1134, 686);
+            ControlBox = false;
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Controls.Add(panel1);
@@ -581,22 +570,22 @@ namespace IDGEN.Gui.GuiUsers
             ShowIcon = false;
             ShowInTaskbar = false;
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "اضافة / تعديل مستخدم";
-            TopMost = true;
+            Text = "اضافة / تعديل كلية";
+            Load += AddUserForm_Load;
             panel1.ResumeLayout(false);
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)mainDataGridView).EndInit();
             flowLayoutNavBar.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)mainDataGridView).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button buttonSave;
+        private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.Button buttonSaveAndClose;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label5;
@@ -629,12 +618,11 @@ namespace IDGEN.Gui.GuiUsers
         private Label label25;
         private Label label26;
         private FlowLayoutPanel flowLayoutNavBar;
-        private Button button1;
-        private Button buttonEdit;
+        private Button buttonAdd;
         private Button buttonDelete;
-        private DataGridView mainDataGridView;
         private ToolTip toolTip1;
         private Label labelNoData;
         private Label labelValidation;
+        private DataGridView mainDataGridView;
     }
 }

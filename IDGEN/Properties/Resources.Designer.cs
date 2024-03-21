@@ -61,6 +61,60 @@ namespace IDGEN.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to اجراء حذف.
+        /// </summary>
+        internal static string DeleteDialogCaption {
+            get {
+                return ResourceManager.GetString("DeleteDialogCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to هل انت متأكد من هذا الاجراء . لا يمكن استرجاء البيانات.
+        /// </summary>
+        internal static string DeleteDialogText {
+            get {
+                return ResourceManager.GetString("DeleteDialogText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to لا يوجد بيانات.
+        /// </summary>
+        internal static string EmptyMessageCaption {
+            get {
+                return ResourceManager.GetString("EmptyMessageCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to يبدو ان شبكة عرض البيانات فارغة, لا يمكن تنفيذ هذا الاجراء.
+        /// </summary>
+        internal static string EmptyMessageText {
+            get {
+                return ResourceManager.GetString("EmptyMessageText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to خطا ادخال.
+        /// </summary>
+        internal static string FiledReqCaption {
+            get {
+                return ResourceManager.GetString("FiledReqCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to جميع الحقوق التي تحتوي على علامة * هي حقول مطلوبة. اعد ادخالها ثم حاول مره اخرى.
+        /// </summary>
+        internal static string FiledsReqText {
+            get {
+                return ResourceManager.GetString("FiledsReqText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap icons8_about_32px {
@@ -76,6 +130,46 @@ namespace IDGEN.Properties {
         internal static System.Drawing.Bitmap icons8_add_32px {
             get {
                 object obj = ResourceManager.GetObject("icons8_add_32px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_Cancel_32px_1 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_Cancel_32px_1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_chevron_left_32px {
+            get {
+                object obj = ResourceManager.GetObject("icons8_chevron_left_32px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_chevron_right_32px {
+            get {
+                object obj = ResourceManager.GetObject("icons8_chevron_right_32px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_circled_right_32px_1 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_circled_right_32px_1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -223,10 +317,66 @@ namespace IDGEN.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Loading {
+            get {
+                object obj = ResourceManager.GetObject("Loading", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Logo {
             get {
                 object obj = ResourceManager.GetObject("Logo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Notification {
+            get {
+                object obj = ResourceManager.GetObject("Notification", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to خطا اتصال في السيرفر.
+        /// </summary>
+        internal static string ServerErrorCaption {
+            get {
+                return ResourceManager.GetString("ServerErrorCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to يبدو ان لديك خطا في الاتصال في السيرفر . حاول مجددا او اعد ضبط الاتصال من اعدادات النظام.
+        /// </summary>
+        internal static string ServerErrorText {
+            get {
+                return ResourceManager.GetString("ServerErrorText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to اجراء حذف.
+        /// </summary>
+        internal static string ShowReDeleteFiledCaption {
+            get {
+                return ResourceManager.GetString("ShowReDeleteFiledCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to لحساسية اجراء الحذف لابد لك من تحديد كامل السطر .
+        /// </summary>
+        internal static string ShowReDeleteFiledText {
+            get {
+                return ResourceManager.GetString("ShowReDeleteFiledText", resourceCulture);
             }
         }
     }

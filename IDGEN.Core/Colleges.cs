@@ -12,7 +12,7 @@ namespace IDGEN.Core
         public string CollegeName { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
-        public int CollegeCode { get; set; }
+        public string CollegeCode { get; set; }
         public string? Email { get; set; }
         public string? Phone { get; set; }
         public string? Details { get; set; }

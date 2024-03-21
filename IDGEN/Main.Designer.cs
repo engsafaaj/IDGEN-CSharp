@@ -166,6 +166,7 @@
             Controls.Add(flowLayoutPanel1);
             Font = new Font("Cairo", 12F, FontStyle.Regular, GraphicsUnit.Point);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            IsMdiContainer = true;
             Margin = new Padding(4, 6, 4, 6);
             Name = "Main";
             RightToLeft = RightToLeft.Yes;

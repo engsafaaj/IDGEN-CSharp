@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle16 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle17 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle18 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle19 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle20 = new DataGridViewCellStyle();
             flowLayoutNavBar = new FlowLayoutPanel();
             buttonAdd = new Button();
             buttonEdit = new Button();
@@ -46,9 +46,14 @@
             mainDataGridView = new DataGridView();
             toolTip1 = new ToolTip(components);
             labelNoData = new Label();
+            comboBoxPageNo = new ComboBox();
+            panel1 = new Panel();
+            buttonPrevData = new Button();
+            buttonNextData = new Button();
             flowLayoutNavBar.SuspendLayout();
             SearchPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)mainDataGridView).BeginInit();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // flowLayoutNavBar
@@ -187,46 +192,47 @@
             // 
             mainDataGridView.AllowUserToAddRows = false;
             mainDataGridView.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            mainDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle16.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            mainDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle16;
             mainDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             mainDataGridView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             mainDataGridView.BackgroundColor = Color.White;
-            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = SystemColors.Control;
-            dataGridViewCellStyle7.Font = new Font("Cairo", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle7.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
-            mainDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle17.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle17.BackColor = SystemColors.Control;
+            dataGridViewCellStyle17.Font = new Font("Cairo", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle17.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle17.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle17.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle17.WrapMode = DataGridViewTriState.True;
+            mainDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
             mainDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = SystemColors.Window;
-            dataGridViewCellStyle8.Font = new Font("Cairo", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle8.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
-            mainDataGridView.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle18.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle18.BackColor = SystemColors.Window;
+            dataGridViewCellStyle18.Font = new Font("Cairo", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle18.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle18.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle18.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle18.WrapMode = DataGridViewTriState.False;
+            mainDataGridView.DefaultCellStyle = dataGridViewCellStyle18;
             mainDataGridView.Dock = DockStyle.Fill;
             mainDataGridView.Location = new Point(0, 72);
             mainDataGridView.Name = "mainDataGridView";
             mainDataGridView.ReadOnly = true;
-            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = SystemColors.Control;
-            dataGridViewCellStyle9.Font = new Font("Cairo", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle9.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.True;
-            mainDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle19.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle19.BackColor = SystemColors.Control;
+            dataGridViewCellStyle19.Font = new Font("Cairo", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle19.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle19.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle19.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle19.WrapMode = DataGridViewTriState.True;
+            mainDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle19;
             mainDataGridView.RowHeadersWidth = 51;
-            dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            mainDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle20.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            mainDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle20;
             mainDataGridView.RowTemplate.Height = 29;
             mainDataGridView.Size = new Size(1181, 620);
             mainDataGridView.TabIndex = 2;
+            mainDataGridView.CellDoubleClick += mainDataGridView_CellDoubleClick;
             // 
             // labelNoData
             // 
@@ -240,11 +246,66 @@
             labelNoData.Size = new Size(132, 37);
             labelNoData.TabIndex = 6;
             labelNoData.Text = "لا يوجد بيانات";
+            labelNoData.Visible = false;
+            // 
+            // comboBoxPageNo
+            // 
+            comboBoxPageNo.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            comboBoxPageNo.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxPageNo.FormattingEnabled = true;
+            comboBoxPageNo.Location = new Point(53, 11);
+            comboBoxPageNo.Name = "comboBoxPageNo";
+            comboBoxPageNo.Size = new Size(121, 45);
+            comboBoxPageNo.TabIndex = 7;
+            toolTip1.SetToolTip(comboBoxPageNo, "اختر الصفحة");
+            comboBoxPageNo.SelectedIndexChanged += comboBoxPageNo_SelectedIndexChanged;
+            // 
+            // panel1
+            // 
+            panel1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            panel1.Controls.Add(buttonNextData);
+            panel1.Controls.Add(comboBoxPageNo);
+            panel1.Controls.Add(buttonPrevData);
+            panel1.Location = new Point(9, 619);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(227, 64);
+            panel1.TabIndex = 8;
+            // 
+            // buttonPrevData
+            // 
+            buttonPrevData.Anchor = AnchorStyles.None;
+            buttonPrevData.Font = new Font("Cairo", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonPrevData.Image = Properties.Resources.icons8_chevron_left_32px;
+            buttonPrevData.ImageAlign = ContentAlignment.MiddleLeft;
+            buttonPrevData.Location = new Point(5, 9);
+            buttonPrevData.Margin = new Padding(5);
+            buttonPrevData.Name = "buttonPrevData";
+            buttonPrevData.Size = new Size(40, 50);
+            buttonPrevData.TabIndex = 2;
+            toolTip1.SetToolTip(buttonPrevData, "الصفحة السابقة");
+            buttonPrevData.UseVisualStyleBackColor = true;
+            buttonPrevData.Click += buttonPrevData_Click;
+            // 
+            // buttonNextData
+            // 
+            buttonNextData.Anchor = AnchorStyles.None;
+            buttonNextData.Font = new Font("Cairo", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonNextData.Image = Properties.Resources.icons8_chevron_right_32px;
+            buttonNextData.ImageAlign = ContentAlignment.MiddleLeft;
+            buttonNextData.Location = new Point(182, 9);
+            buttonNextData.Margin = new Padding(5);
+            buttonNextData.Name = "buttonNextData";
+            buttonNextData.Size = new Size(40, 50);
+            buttonNextData.TabIndex = 9;
+            toolTip1.SetToolTip(buttonNextData, "الصفحة اللاحقة");
+            buttonNextData.UseVisualStyleBackColor = true;
+            buttonNextData.Click += buttonNextData_Click;
             // 
             // UsersUserControl
             // 
             AutoScaleDimensions = new SizeF(11F, 37F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(panel1);
             Controls.Add(labelNoData);
             Controls.Add(mainDataGridView);
             Controls.Add(flowLayoutNavBar);
@@ -257,6 +318,7 @@
             SearchPanel.ResumeLayout(false);
             SearchPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)mainDataGridView).EndInit();
+            panel1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -275,5 +337,9 @@
         private Button buttonSearch;
         private ToolTip toolTip1;
         private Label labelNoData;
+        private ComboBox comboBoxPageNo;
+        private Panel panel1;
+        private Button buttonPrevData;
+        private Button buttonNextData;
     }
 }

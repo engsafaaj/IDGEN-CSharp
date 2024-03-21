@@ -10,7 +10,7 @@ namespace IDGEN.Core
     {
         public int Id { get; set; }
         public string DepName { get; set; }
-        public int DepCode { get; set; }
+        public string DepCode { get; set; }
 
         // Navigations
         public Colleges Colleges { get; set; }

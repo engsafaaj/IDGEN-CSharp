@@ -1,10 +1,13 @@
 using IDGEN.Code;
+using IDGEN.GUI.HomeGui;
+using IDGEN.GUI.UsersGui;
 namespace IDGEN
 {
     public partial class Main : Form
     {
         // Fields
         private PageManager pageManager;
+        private static Main? _Main;
 
 
         // Constructors
@@ -27,6 +30,12 @@ namespace IDGEN
 
 
         // Methods
+
+        public static Main Instance()
+        {
+            return _Main ?? (new Main());
+        }
+
         private void GetScreenState(bool state)
         {
             // State==Ture => Maximize
@@ -65,13 +74,13 @@ namespace IDGEN
 
         private void buttonHome_Click(object sender, EventArgs e)
         {
-            pageManager.LoadPage(new GUI.HomeGui.HomeUserControl());
+            pageManager.LoadPage(HomeUserControl.Instance());
             ChangeTextOfMainPage(buttonHome.Text);
         }
 
         private void buttonUsers_Click(object sender, EventArgs e)
         {
-            pageManager.LoadPage(new GUI.UsersGui.UsersUserControl());
+            pageManager.LoadPage(UsersUserControl.Instance(this));
             ChangeTextOfMainPage(buttonUsers.Text);
         }
 
