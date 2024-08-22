@@ -6,7 +6,16 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationIcon>ID-GEN.ico</ApplicationIcon>
+    <Description>IDGEN
+اداة تم تطويرها بناءا على متطلبات وزارة التعليم العالي والبحث العلمي لتولد المعرف الموحد للطالب
+</Description>
+    <Copyright>جميع الحقوق محفوظة لقناة تكنو يو</Copyright>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="ID-GEN.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="ClosedXML" Version="0.102.2" />
@@ -24,6 +33,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="GUI\GuiLogs\LogsUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="GUI\StudnetGui\AddStudentForm.cs" />
+    <Compile Update="GUI\StudnetGui\StudentUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>

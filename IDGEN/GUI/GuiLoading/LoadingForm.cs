@@ -13,6 +13,7 @@ namespace IDGEN.Gui.GuiLoading
         public LoadingForm( Form form)
         {
             InitializeComponent();
+            
             this.Owner = form;  
         }
     }

@@ -5,19 +5,7 @@ using IDGEN.Data;
 using IDGEN.Data.EF;
 using IDGEN.Gui.GuiLoading;
 using IDGEN.GUI.UsersGui;
-using Microsoft.VisualBasic.ApplicationServices;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Reflection.Emit;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace IDGEN.Gui.GuiUsers
 {
@@ -36,17 +24,19 @@ namespace IDGEN.Gui.GuiUsers
         private int RowId;
         private bool IsEdit;
 
+        // Constructors
         public AddUserForm(UsersUserControl pageControl, int Id, bool isEdit, Main main)
         {
             InitializeComponent();
             this.Owner = main;
             IsEdit = isEdit;
             ID = Id;
+
             // Inject Data Helper
             dataHelper = new CollegeEF();
             dataHelperLogs = new LogsEF();
             dataHelperDep = new DepEF();
-
+            //
             collegeDep = new CollegeDep();
             loadingForm = new LoadingForm(this);
 
@@ -206,65 +196,56 @@ namespace IDGEN.Gui.GuiUsers
             }
             else
             {
-                if (mainDataGridView.Rows.Count > 0)
+
+                loadingForm.Show();
+                if (await Task.Run(() => dataHelper.IsConAvailable()))
                 {
-                    loadingForm.Show();
-                    if (await Task.Run(() => dataHelper.IsConAvailable()))
+                    // Check Duplicated Data => Add
+                    var collegeName = textBoxName.Text; var collegeCode = textBoxCollegeCode.Text; var userName = textBoxUserName.Text;
+
+                    var dupliateData = Task.Run(() => dataHelper.GetAllData().Where(X => X.Id != ID)
+                                   .Where(x => x.CollegeName == collegeName || x.CollegeCode == collegeCode || x.UserName == userName)
+                                   .FirstOrDefault() ?? new Colleges()).Result;
+
+                    if (dupliateData.Id > 0)
                     {
-                        // Check Duplicated Data => Add
-                        var collegeName = textBoxName.Text; var collegeCode = textBoxCollegeCode.Text;
-
-                        var dupliateData = Task.Run(() => dataHelper.GetAllData().Where(X => X.Id != ID)
-                                       .Where(x => x.CollegeName == collegeName || x.CollegeCode == collegeCode)
-                                       .FirstOrDefault() ?? new Colleges()).Result;
-
-                        if (dupliateData.Id > 0)
-                        {
-                            loadingForm.Hide();
-                            MessageBox.Show("يجب ان يكون رمز الكلية واسمها مختلف", "بيانات مكررة", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        else
-                        {
-                            if (await EditData())
-                            {
-                                if (!IsEdit)
-                                {
-                                    MessageCollections.ShowAddNotificaiton();
-                                    this.Close();
-                                }
-                                else
-                                {
-                                    MessageCollections.ShowUpdateNotificaiton();
-                                    this.Close();
-                                }
-                            }
-                            else
-                            {
-                                loadingForm.Hide();
-                                MessageCollections.ShowErrorServer();
-                            }
-                        }
-
+                        loadingForm.Hide();
+                        MessageBox.Show("يجب ان يكون رمز الكلية واسمها مختلف", "بيانات مكررة", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
-                        loadingForm.Hide();
-                        MessageCollections.ShowErrorServer();
+                        if (await EditData())
+                        {
+                            if (!IsEdit)
+                            {
+                                MessageCollections.ShowAddNotificaiton();
+                                DialogResult = DialogResult.OK; 
+                                this.Close();
+                            }
+                            else
+                            {
+                                MessageCollections.ShowUpdateNotificaiton();
+                                DialogResult = DialogResult.OK;
+                                this.Close();
+                            }
+                        }
+                        else
+                        {
+                            loadingForm.Hide();
+                            MessageCollections.ShowErrorServer();
+                        }
                     }
+
                 }
                 else
                 {
-                    MessageBox.Show("يجب ان تتضمن الكلية قسم واحد على الاقل"
-              , "لم يتم اضافة قسم علمي"
-              , MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    loadingForm.Hide();
+                    MessageCollections.ShowErrorServer();
                 }
-
 
                 loadingForm.Hide();
             }
         }
-
-
 
         private async Task<bool> EditData()
         {
@@ -289,10 +270,10 @@ namespace IDGEN.Gui.GuiUsers
                 // Save System Records
                 var logs = new Logs
                 {
-                    LogTitle = " تعديل كلية",
+                    LogTitle = " حفظ كلية",
                     UserFullName = Properties.Settings.Default.UserName,
-                    LogDescriptions = "تمت تعديل كلية   " + colleges.CollegeName,
-                    LogDate = DateTime.Now.ToShortDateString(),
+                    LogDescriptions = "تم حفظ  كلية   " + colleges.CollegeName,
+                    LogDate = DateTime.Now.ToShortDateString() + " | " + DateTime.Now.ToShortTimeString(),
                     UserDeviceMac = DeviceHelper.GetDeviceMacAddress(),
                     UserDeviceName = Environment.MachineName,
                 };
@@ -429,15 +410,15 @@ namespace IDGEN.Gui.GuiUsers
 
                             LoadData();
                             int newDepCode = Convert.ToInt32(DepCode) + 1;
-                            textBoxDepCode.Text = "0"+newDepCode.ToString();
+                            textBoxDepCode.Text = "0" + newDepCode.ToString();
 
                             // Save System Records
                             var logs = new Logs
                             {
                                 LogTitle = " اضافة قسم",
                                 UserFullName = Properties.Settings.Default.UserName,
-                                LogDescriptions = "تمت اضافة قسم   " + DepName,
-                                LogDate = DateTime.Now.ToShortDateString(),
+                                LogDescriptions = "تم اضافة قسم   " + DepName,
+                                LogDate = DateTime.Now.ToShortDateString() + " | " + DateTime.Now.ToShortTimeString(),
                                 UserDeviceMac = DeviceHelper.GetDeviceMacAddress(),
                                 UserDeviceName = Environment.MachineName,
                             };
@@ -463,9 +444,10 @@ namespace IDGEN.Gui.GuiUsers
 
         private async void buttonDelete_Click(object sender, EventArgs e)
         {
-            if (mainDataGridView.RowCount > 0)
+            if (mainDataGridView.RowCount > 0 && mainDataGridView.CurrentRow != null)
             {
                 var Deleteresult = MessageCollections.ShowDeleteDialog();
+
                 if (Deleteresult)
                 {
                     IdList.Clear();
@@ -484,8 +466,8 @@ namespace IDGEN.Gui.GuiUsers
                                 {
                                     LogTitle = " حذف قسم",
                                     UserFullName = Properties.Settings.Default.UserName,
-                                    LogDescriptions = "تمت حذف قسم   " + RowId.ToString(),
-                                    LogDate = DateTime.Now.ToShortDateString(),
+                                    LogDescriptions = "تم حذف قسم " + Convert.ToString(mainDataGridView.CurrentRow.Cells[1].Value),
+                                    LogDate = DateTime.Now.ToShortDateString() + " | " + DateTime.Now.ToShortTimeString(),
                                     UserDeviceMac = DeviceHelper.GetDeviceMacAddress(),
                                     UserDeviceName = Environment.MachineName,
                                 };
@@ -545,6 +527,8 @@ namespace IDGEN.Gui.GuiUsers
                         {
                             loadingForm.Hide();
                             Code.MessageCollections.ShowErrorServer();
+                            this.Close();
+
                         }
 
                     }
@@ -552,6 +536,7 @@ namespace IDGEN.Gui.GuiUsers
                     {
                         loadingForm.Hide();
                         Code.MessageCollections.ShowErrorServer();
+                        this.Close();
                     }
 
                     loadingForm.Hide();
@@ -595,6 +580,37 @@ namespace IDGEN.Gui.GuiUsers
         private void AddUserForm_Load(object sender, EventArgs e)
         {
             SetDataForEdit();
+        }
+
+        private void textBoxDepCode_MouseLeave(object sender, EventArgs e)
+        {
+            // Validate the text to ensure it represents a non-negative integer
+            if (!int.TryParse(textBoxDepCode.Text, out int value) || value < 0)
+            {
+                // If the text is not a valid non-negative integer, reset the text to empty
+                textBoxDepCode.Text = "00";
+                labelValidation.Text = "رمز القسم:يتكون رمز القسم من مرتبتين  ";
+            }
+            // Trim the text to a maximum length of 4 characters
+            if (textBoxDepCode.Text.Length > 2)
+            {
+                textBoxDepCode.Text = textBoxDepCode.Text.Substring(0, 2);
+            }
+
+            if (textBoxDepCode.TextLength != 2)
+            {
+                textBoxDepCode.Text = "00";
+                MessageBox.Show("يجب ان يتكون رمز القسم من مرتبتين");
+            }
+        }
+
+        private void textBoxCollegeCode_MouseLeave(object sender, EventArgs e)
+        {
+            if (textBoxCollegeCode.TextLength != 4)
+            {
+                textBoxCollegeCode.Text = "0000";
+                MessageBox.Show("يجب ان يتكون رمز الكلية من 4 مراتب");
+            }
         }
     }
 }

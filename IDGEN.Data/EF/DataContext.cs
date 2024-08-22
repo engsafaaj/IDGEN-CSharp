@@ -1,4 +1,5 @@
 ﻿using IDGEN.Core;
+using IDGEN.Data.SqlServer;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,8 @@ namespace IDGEN.Data.EF
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var sqlcon = @"Server=.\SQLEXPRESS;Database=IDGENDataBase;Encrypt=false;Trusted_Connection=True;"; // For Test
+         //   var sqlcon = @"Server=.\SQLEXPRESS;Database=IDGENDataBase;Encrypt=false;Trusted_Connection=True;"; // For Test
+            var sqlcon = SqlCon.SqlConnetion;
 
             optionsBuilder.UseSqlServer(sqlcon);
         }
@@ -21,5 +23,6 @@ namespace IDGEN.Data.EF
         public DbSet<Colleges> Colleges { get; set; }
         public DbSet<CollegeDep> CollegeDep { get; set; }
         public DbSet<Logs> Logs { get; set; }
+        public DbSet<Studnets> Studnets { get; set; }
     }
 }

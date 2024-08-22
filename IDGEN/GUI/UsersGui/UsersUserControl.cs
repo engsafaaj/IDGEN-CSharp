@@ -4,18 +4,7 @@ using IDGEN.Data;
 using IDGEN.Data.EF;
 using IDGEN.Gui.GuiLoading;
 using IDGEN.Gui.GuiUsers;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace IDGEN.GUI.UsersGui
 {
@@ -27,29 +16,33 @@ namespace IDGEN.GUI.UsersGui
         IDataHelper<Logs> dataHelperLogs;
         private static UsersUserControl? _UsersUserControl;
         LoadingForm loadingForm;
-       public static Main? _main;
+        public static Main? _main;
         List<int> IdList = new List<int>();
         private int RowId;
-        private int page;
 
+        // Constructors
         public UsersUserControl()
         {
             InitializeComponent();
+
             // Inject
             dataHelper = new CollegeEF();
             dataHelperLogs = new LogsEF();
             loadingForm = new LoadingForm(_main);
-            page = 0;
+            //
+
             LoadData();
         }
 
+
+        // Methods and Events
         public async void LoadData()
         {
             loadingForm.Show();
 
             if (await Task.Run(() => dataHelper.IsConAvailable()))
             {
-                var data = await Task.Run(() => dataHelper.GetAllData());
+                var data = await Task.Run(() => dataHelper.GetAllData().Where(X=>X.IsAdmin==false).ToList());
                 mainDataGridView.DataSource = data.Take(Properties.Settings.Default.DataGridViewRowNo).ToList();
 
                 // Add No of Page into Combo Box
@@ -102,7 +95,7 @@ namespace IDGEN.GUI.UsersGui
         public static UsersUserControl Instance(Main main)
         {
             _main = main;
-            return _UsersUserControl ?? (new UsersUserControl());
+            return _UsersUserControl ?? (_UsersUserControl = new UsersUserControl());
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)
@@ -130,7 +123,7 @@ namespace IDGEN.GUI.UsersGui
 
         private void Edit()
         {
-            if (mainDataGridView.RowCount > 0)
+            if (mainDataGridView.RowCount > 0 && mainDataGridView.CurrentRow != null)
             {
                 // Get Id
                 RowId = Convert.ToInt32(mainDataGridView.CurrentRow.Cells[0].Value);
@@ -157,7 +150,7 @@ namespace IDGEN.GUI.UsersGui
 
         private async void buttonDelete_Click(object sender, EventArgs e)
         {
-            if (mainDataGridView.RowCount > 0)
+            if (mainDataGridView.RowCount > 0 && mainDataGridView.CurrentRow != null)
             {
                 var Deleteresult = MessageCollections.ShowDeleteDialog();
                 if (Deleteresult)
@@ -179,7 +172,7 @@ namespace IDGEN.GUI.UsersGui
                                     LogTitle = " حذف كلية",
                                     UserFullName = Properties.Settings.Default.UserName,
                                     LogDescriptions = "تم حذف الكلية التي تحمل الرقم التعريفي   " + RowId.ToString(),
-                                    LogDate = DateTime.Now.ToShortDateString(),
+                                    LogDate = DateTime.Now.ToShortDateString() + " | " + DateTime.Now.ToShortTimeString(),
                                     UserDeviceMac = DeviceHelper.GetDeviceMacAddress(),
                                     UserDeviceName = Environment.MachineName,
                                 };
@@ -321,7 +314,7 @@ namespace IDGEN.GUI.UsersGui
                 loadingForm.Show();
                 if (await Task.Run(() => dataHelper.IsConAvailable()))
                 {
-                    var data = await Task.Run(() => dataHelper.GetAllData());
+                    var data = await Task.Run(() => dataHelper.GetAllData().Where(X => X.IsAdmin == false).ToList());
                     var dataId = data.Select(x => x.Id).ToArray();
                     int index = comboBoxPageNo.SelectedIndex;
                     int IndexNoOfRow = index * Properties.Settings.Default.DataGridViewRowNo;
@@ -347,7 +340,7 @@ namespace IDGEN.GUI.UsersGui
             {
                 loadingForm.Hide();
             }
-        
+
 
         }
 
@@ -365,7 +358,7 @@ namespace IDGEN.GUI.UsersGui
                 if (await Task.Run(() => dataHelper.IsConAvailable()))
                 {
                     string searchIteam = textBoxSearch.Text;
-                    mainDataGridView.DataSource = await Task.Run(() => dataHelper.Search(searchIteam));
+                    mainDataGridView.DataSource = await Task.Run(() => dataHelper.Search(searchIteam).Where(X => X.IsAdmin == false).ToList());
 
 
                     if (mainDataGridView.DataSource == null)
@@ -415,6 +408,35 @@ namespace IDGEN.GUI.UsersGui
             }
             catch { }
 
+        }
+
+        private async void buttonExportDataGridView_Click(object sender, EventArgs e)
+        {
+            loadingForm.Show();
+            if (await Task.Run(() => dataHelper.IsConAvailable()))
+            {
+                var data = (List<Colleges>) mainDataGridView.DataSource;
+                DataTable dataTable = new DataTable();
+                // Convert List of Data to DataTable
+                loadingForm.Show();
+                using (var reader = FastMember.ObjectReader.Create(data))
+                {
+                    dataTable.Load(reader);
+                }
+                loadingForm.Hide();
+                // Re-Set Columns
+                DataTable dataTableArranged = SetDataTableColumns(dataTable);
+                // Export Data to as Sheet Excel
+
+                Code.ExcelExporter.ExportAsXlsxFile(dataTableArranged);
+
+            }
+            else
+            {
+                loadingForm.Hide();
+                MessageCollections.ShowErrorServer();
+            }
+            loadingForm.Hide();
         }
     }
 }

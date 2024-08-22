@@ -22,6 +22,7 @@ namespace IDGEN.Core
         // Navigations
 
         public List<CollegeDep> CollegeDep { get; set; } 
+        public List<Studnets> Studnets { get; set; } 
 
     }
 }

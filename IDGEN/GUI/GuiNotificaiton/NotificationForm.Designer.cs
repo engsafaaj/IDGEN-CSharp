@@ -43,7 +43,7 @@ namespace IDGEN.Gui.GuiNotificaiton
             pictureBox1.Image = Properties.Resources.Notification;
             pictureBox1.Location = new Point(0, 0);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(75, 51);
+            pictureBox1.Size = new Size(75, 76);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
@@ -55,7 +55,7 @@ namespace IDGEN.Gui.GuiNotificaiton
             labelTitle.ForeColor = Color.White;
             labelTitle.Location = new Point(75, 0);
             labelTitle.Name = "labelTitle";
-            labelTitle.Size = new Size(300, 51);
+            labelTitle.Size = new Size(300, 76);
             labelTitle.TabIndex = 1;
             labelTitle.Text = "هنا وصف الاشعار ";
             labelTitle.TextAlign = ContentAlignment.MiddleCenter;
@@ -71,7 +71,7 @@ namespace IDGEN.Gui.GuiNotificaiton
             // 
             AutoScaleDimensions = new SizeF(11F, 37F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(375, 51);
+            ClientSize = new Size(375, 76);
             Controls.Add(labelTitle);
             Controls.Add(pictureBox1);
             Font = new Font("Cairo", 12F, FontStyle.Regular, GraphicsUnit.Point);

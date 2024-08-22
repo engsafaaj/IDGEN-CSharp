@@ -10,7 +10,9 @@ namespace IDGEN.Data
     {
         // Read
         List<Table> GetAllData();
+        List<Table> GetAllDataByUser(int collegeId);
         List<Table> Search(string searchIteam);
+        List<Table> SearchByUser(string searchIteam, int collegeId);
         Table Find(int Id);
 
         // Write

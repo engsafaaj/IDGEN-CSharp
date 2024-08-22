@@ -84,6 +84,11 @@ namespace IDGEN.Data.EF
             catch { return new List<CollegeDep>(); }
         }
 
+        public List<CollegeDep> GetAllDataByUser(int collegeId)
+        {
+            throw new NotImplementedException();
+        }
+
         public bool IsConAvailable()
         {
             try
@@ -108,6 +113,11 @@ namespace IDGEN.Data.EF
                     .ToList();
             }
             catch { return new List<CollegeDep>(); }
+        }
+
+        public List<CollegeDep> SearchByUser(string searchIteam, int collegeId)
+        {
+            throw new NotImplementedException();
         }
 
         public int Update(CollegeDep table)

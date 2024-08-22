@@ -78,9 +78,14 @@ namespace IDGEN.Data.EF
         {
             try
             {
-                return db.Logs.ToList();
+                return db.Logs.OrderByDescending(x=>x.Id).ToList();
             }
             catch { return new List<Logs>(); }
+        }
+
+        public List<Logs> GetAllDataByUser(int collegeId)
+        {
+            throw new NotImplementedException();
         }
 
         public bool IsConAvailable()
@@ -98,7 +103,7 @@ namespace IDGEN.Data.EF
         {
             try
             {
-                return db.Logs
+                return db.Logs.OrderByDescending(x => x.Id)
                     .Where(x => x.Id.ToString() == searchIteam||
                     x.LogTitle.Contains(searchIteam)||
                     x.LogDescriptions.Contains(searchIteam)||
@@ -110,6 +115,11 @@ namespace IDGEN.Data.EF
                     .ToList();
             }
             catch { return new List<Logs>(); }
+        }
+
+        public List<Logs> SearchByUser(string searchIteam, int collegeId)
+        {
+            throw new NotImplementedException();
         }
 
         public int Update(Logs table)

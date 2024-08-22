@@ -61,6 +61,16 @@ namespace IDGEN.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Connecting {
+            get {
+                object obj = ResourceManager.GetObject("Connecting", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to اجراء حذف.
         /// </summary>
         internal static string DeleteDialogCaption {
@@ -88,11 +98,21 @@ namespace IDGEN.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to يبدو ان شبكة عرض البيانات فارغة, لا يمكن تنفيذ هذا الاجراء.
+        ///   Looks up a localized string similar to يبدو ان شبكة عرض البيانات فارغة او انك ربما لم تقم بتحديد السطر, لا يمكن تنفيذ هذا الاجراء.
         /// </summary>
         internal static string EmptyMessageText {
             get {
                 return ResourceManager.GetString("EmptyMessageText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap FCCustomLogin {
+            get {
+                object obj = ResourceManager.GetObject("FCCustomLogin", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -177,6 +197,16 @@ namespace IDGEN.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_copy_32px {
+            get {
+                object obj = ResourceManager.GetObject("icons8_copy_32px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_Delete_32px {
             get {
                 object obj = ResourceManager.GetObject("icons8_Delete_32px", resourceCulture);
@@ -237,6 +267,16 @@ namespace IDGEN.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_printer_32px {
+            get {
+                object obj = ResourceManager.GetObject("icons8_printer_32px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_refresh_32px {
             get {
                 object obj = ResourceManager.GetObject("icons8_refresh_32px", resourceCulture);
@@ -287,6 +327,16 @@ namespace IDGEN.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_student_male_480px {
+            get {
+                object obj = ResourceManager.GetObject("icons8_student_male_480px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_students_32px {
             get {
                 object obj = ResourceManager.GetObject("icons8_students_32px", resourceCulture);
@@ -300,6 +350,26 @@ namespace IDGEN.Properties {
         internal static System.Drawing.Bitmap icons8_university_32px {
             get {
                 object obj = ResourceManager.GetObject("icons8_university_32px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] icons8_username_32px {
+            get {
+                object obj = ResourceManager.GetObject("icons8_username_32px", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_Video_Id_Verification_480px {
+            get {
+                object obj = ResourceManager.GetObject("icons8_Video_Id_Verification_480px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -327,9 +397,39 @@ namespace IDGEN.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Login_Page {
+            get {
+                object obj = ResourceManager.GetObject("Login Page", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Logo {
             get {
                 object obj = ResourceManager.GetObject("Logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap name_480px {
+            get {
+                object obj = ResourceManager.GetObject("name_480px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap nointernet {
+            get {
+                object obj = ResourceManager.GetObject("nointernet", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -345,7 +445,27 @@ namespace IDGEN.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to خطا اتصال في السيرفر.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap password_240px {
+            get {
+                object obj = ResourceManager.GetObject("password_240px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap personnage {
+            get {
+                object obj = ResourceManager.GetObject("personnage", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to فقد الاتصال بالخادم.
         /// </summary>
         internal static string ServerErrorCaption {
             get {
@@ -354,7 +474,7 @@ namespace IDGEN.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to يبدو ان لديك خطا في الاتصال في السيرفر . حاول مجددا او اعد ضبط الاتصال من اعدادات النظام.
+        ///   Looks up a localized string similar to لقد واجهنا مشاكل في الاتصال بالخادم. يرجى مراجعة نقطة الاتصال لديك.
         /// </summary>
         internal static string ServerErrorText {
             get {

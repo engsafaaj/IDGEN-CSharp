@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DataGridViewCellStyle dataGridViewCellStyle16 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle17 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle18 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle19 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle20 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             flowLayoutNavBar = new FlowLayoutPanel();
             buttonAdd = new Button();
             buttonEdit = new Button();
@@ -45,11 +45,12 @@
             buttonSearch = new Button();
             mainDataGridView = new DataGridView();
             toolTip1 = new ToolTip(components);
-            labelNoData = new Label();
             comboBoxPageNo = new ComboBox();
-            panel1 = new Panel();
             buttonPrevData = new Button();
             buttonNextData = new Button();
+            labelNoData = new Label();
+            panel1 = new Panel();
+            buttonExportDataGridView = new Button();
             flowLayoutNavBar.SuspendLayout();
             SearchPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)mainDataGridView).BeginInit();
@@ -63,6 +64,7 @@
             flowLayoutNavBar.Controls.Add(buttonEdit);
             flowLayoutNavBar.Controls.Add(buttonDelete);
             flowLayoutNavBar.Controls.Add(buttonUpdate);
+            flowLayoutNavBar.Controls.Add(buttonExportDataGridView);
             flowLayoutNavBar.Controls.Add(buttonExport);
             flowLayoutNavBar.Controls.Add(SearchPanel);
             flowLayoutNavBar.Dock = DockStyle.Top;
@@ -77,7 +79,7 @@
             buttonAdd.Font = new Font("Cairo", 12F, FontStyle.Regular, GraphicsUnit.Point);
             buttonAdd.Image = Properties.Resources.icons8_add_32px;
             buttonAdd.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonAdd.Location = new Point(1026, 10);
+            buttonAdd.Location = new Point(1005, 10);
             buttonAdd.Margin = new Padding(5);
             buttonAdd.Name = "buttonAdd";
             buttonAdd.Size = new Size(140, 50);
@@ -92,7 +94,7 @@
             buttonEdit.Font = new Font("Cairo", 12F, FontStyle.Regular, GraphicsUnit.Point);
             buttonEdit.Image = Properties.Resources.icons8_edit_32px;
             buttonEdit.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonEdit.Location = new Point(876, 10);
+            buttonEdit.Location = new Point(855, 10);
             buttonEdit.Margin = new Padding(5);
             buttonEdit.Name = "buttonEdit";
             buttonEdit.Size = new Size(140, 50);
@@ -107,7 +109,7 @@
             buttonDelete.Font = new Font("Cairo", 12F, FontStyle.Regular, GraphicsUnit.Point);
             buttonDelete.Image = Properties.Resources.icons8_Delete_32px;
             buttonDelete.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonDelete.Location = new Point(726, 10);
+            buttonDelete.Location = new Point(705, 10);
             buttonDelete.Margin = new Padding(5);
             buttonDelete.Name = "buttonDelete";
             buttonDelete.Size = new Size(140, 50);
@@ -122,7 +124,7 @@
             buttonUpdate.Font = new Font("Cairo", 12F, FontStyle.Regular, GraphicsUnit.Point);
             buttonUpdate.Image = Properties.Resources.icons8_refresh_32px;
             buttonUpdate.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonUpdate.Location = new Point(576, 10);
+            buttonUpdate.Location = new Point(555, 10);
             buttonUpdate.Margin = new Padding(5);
             buttonUpdate.Name = "buttonUpdate";
             buttonUpdate.Size = new Size(140, 50);
@@ -137,13 +139,13 @@
             buttonExport.Font = new Font("Cairo", 12F, FontStyle.Regular, GraphicsUnit.Point);
             buttonExport.Image = Properties.Resources.icons8_Microsoft_Excel_32px;
             buttonExport.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonExport.Location = new Point(426, 10);
+            buttonExport.Location = new Point(229, 10);
             buttonExport.Margin = new Padding(5);
             buttonExport.Name = "buttonExport";
-            buttonExport.Size = new Size(140, 50);
+            buttonExport.Size = new Size(166, 50);
             buttonExport.TabIndex = 3;
-            buttonExport.Text = "تصدير";
-            toolTip1.SetToolTip(buttonExport, "تصدير البيانات على شكل ملف اكسل");
+            buttonExport.Text = "تصدير الكل";
+            toolTip1.SetToolTip(buttonExport, "تصدير جميع البيانات");
             buttonExport.UseVisualStyleBackColor = true;
             buttonExport.Click += buttonExport_Click;
             // 
@@ -152,7 +154,7 @@
             SearchPanel.BorderStyle = BorderStyle.FixedSingle;
             SearchPanel.Controls.Add(textBoxSearch);
             SearchPanel.Controls.Add(buttonSearch);
-            SearchPanel.Location = new Point(29, 8);
+            SearchPanel.Location = new Point(758, 68);
             SearchPanel.Margin = new Padding(3, 3, 5, 3);
             SearchPanel.Name = "SearchPanel";
             SearchPanel.Size = new Size(389, 50);
@@ -192,61 +194,48 @@
             // 
             mainDataGridView.AllowUserToAddRows = false;
             mainDataGridView.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle16.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            mainDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle16;
+            mainDataGridView.AllowUserToOrderColumns = true;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            mainDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             mainDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             mainDataGridView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             mainDataGridView.BackgroundColor = Color.White;
-            dataGridViewCellStyle17.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle17.BackColor = SystemColors.Control;
-            dataGridViewCellStyle17.Font = new Font("Cairo", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle17.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle17.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle17.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle17.WrapMode = DataGridViewTriState.True;
-            mainDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = SystemColors.Control;
+            dataGridViewCellStyle2.Font = new Font("Cairo", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            mainDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             mainDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle18.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle18.BackColor = SystemColors.Window;
-            dataGridViewCellStyle18.Font = new Font("Cairo", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle18.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle18.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle18.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle18.WrapMode = DataGridViewTriState.False;
-            mainDataGridView.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = SystemColors.Window;
+            dataGridViewCellStyle3.Font = new Font("Cairo", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            mainDataGridView.DefaultCellStyle = dataGridViewCellStyle3;
             mainDataGridView.Dock = DockStyle.Fill;
             mainDataGridView.Location = new Point(0, 72);
             mainDataGridView.Name = "mainDataGridView";
             mainDataGridView.ReadOnly = true;
-            dataGridViewCellStyle19.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle19.BackColor = SystemColors.Control;
-            dataGridViewCellStyle19.Font = new Font("Cairo", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle19.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle19.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle19.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle19.WrapMode = DataGridViewTriState.True;
-            mainDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = SystemColors.Control;
+            dataGridViewCellStyle4.Font = new Font("Cairo", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            mainDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             mainDataGridView.RowHeadersWidth = 51;
-            dataGridViewCellStyle20.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            mainDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            mainDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle5;
             mainDataGridView.RowTemplate.Height = 29;
             mainDataGridView.Size = new Size(1181, 620);
             mainDataGridView.TabIndex = 2;
             mainDataGridView.CellDoubleClick += mainDataGridView_CellDoubleClick;
-            // 
-            // labelNoData
-            // 
-            labelNoData.Anchor = AnchorStyles.None;
-            labelNoData.AutoSize = true;
-            labelNoData.BackColor = Color.White;
-            labelNoData.Font = new Font("Cairo", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            labelNoData.ForeColor = SystemColors.ActiveBorder;
-            labelNoData.Location = new Point(524, 370);
-            labelNoData.Name = "labelNoData";
-            labelNoData.Size = new Size(132, 37);
-            labelNoData.TabIndex = 6;
-            labelNoData.Text = "لا يوجد بيانات";
-            labelNoData.Visible = false;
             // 
             // comboBoxPageNo
             // 
@@ -259,17 +248,6 @@
             comboBoxPageNo.TabIndex = 7;
             toolTip1.SetToolTip(comboBoxPageNo, "اختر الصفحة");
             comboBoxPageNo.SelectedIndexChanged += comboBoxPageNo_SelectedIndexChanged;
-            // 
-            // panel1
-            // 
-            panel1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            panel1.Controls.Add(buttonNextData);
-            panel1.Controls.Add(comboBoxPageNo);
-            panel1.Controls.Add(buttonPrevData);
-            panel1.Location = new Point(9, 619);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(227, 64);
-            panel1.TabIndex = 8;
             // 
             // buttonPrevData
             // 
@@ -300,6 +278,47 @@
             toolTip1.SetToolTip(buttonNextData, "الصفحة اللاحقة");
             buttonNextData.UseVisualStyleBackColor = true;
             buttonNextData.Click += buttonNextData_Click;
+            // 
+            // labelNoData
+            // 
+            labelNoData.Anchor = AnchorStyles.None;
+            labelNoData.AutoSize = true;
+            labelNoData.BackColor = Color.White;
+            labelNoData.Font = new Font("Cairo", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            labelNoData.ForeColor = SystemColors.ActiveBorder;
+            labelNoData.Location = new Point(524, 370);
+            labelNoData.Name = "labelNoData";
+            labelNoData.Size = new Size(132, 37);
+            labelNoData.TabIndex = 6;
+            labelNoData.Text = "لا يوجد بيانات";
+            labelNoData.Visible = false;
+            // 
+            // panel1
+            // 
+            panel1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            panel1.BackColor = Color.White;
+            panel1.Controls.Add(buttonNextData);
+            panel1.Controls.Add(comboBoxPageNo);
+            panel1.Controls.Add(buttonPrevData);
+            panel1.Location = new Point(9, 619);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(227, 64);
+            panel1.TabIndex = 8;
+            // 
+            // buttonExportDataGridView
+            // 
+            buttonExportDataGridView.Font = new Font("Cairo", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonExportDataGridView.Image = Properties.Resources.icons8_Microsoft_Excel_32px;
+            buttonExportDataGridView.ImageAlign = ContentAlignment.MiddleLeft;
+            buttonExportDataGridView.Location = new Point(405, 10);
+            buttonExportDataGridView.Margin = new Padding(5);
+            buttonExportDataGridView.Name = "buttonExportDataGridView";
+            buttonExportDataGridView.Size = new Size(140, 50);
+            buttonExportDataGridView.TabIndex = 7;
+            buttonExportDataGridView.Text = "تصدير";
+            toolTip1.SetToolTip(buttonExportDataGridView, "يتم تصدير البيانات المتواجدة في شبكة العرض");
+            buttonExportDataGridView.UseVisualStyleBackColor = true;
+            buttonExportDataGridView.Click += buttonExportDataGridView_Click;
             // 
             // UsersUserControl
             // 
@@ -341,5 +360,6 @@
         private Panel panel1;
         private Button buttonPrevData;
         private Button buttonNextData;
+        private Button buttonExportDataGridView;
     }
 }

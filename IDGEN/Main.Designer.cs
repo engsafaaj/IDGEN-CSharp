@@ -38,8 +38,16 @@
             buttonSettings = new Button();
             buttonAbout = new Button();
             panelContainer = new Panel();
+            panelConnection = new Panel();
+            pictureBox1 = new PictureBox();
+            labelConnectionState = new Label();
+            label1 = new Label();
             toolTip1 = new ToolTip(components);
+            timer1 = new System.Windows.Forms.Timer(components);
             flowLayoutPanel1.SuspendLayout();
+            panelContainer.SuspendLayout();
+            panelConnection.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -150,12 +158,65 @@
             // 
             // panelContainer
             // 
-            panelContainer.BackColor = Color.White;
+            panelContainer.BackColor = SystemColors.Control;
+            panelContainer.Controls.Add(panelConnection);
             panelContainer.Dock = DockStyle.Fill;
             panelContainer.Location = new Point(0, 0);
             panelContainer.Name = "panelContainer";
             panelContainer.Size = new Size(1062, 601);
             panelContainer.TabIndex = 1;
+            // 
+            // panelConnection
+            // 
+            panelConnection.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            panelConnection.BackColor = SystemColors.Control;
+            panelConnection.BorderStyle = BorderStyle.Fixed3D;
+            panelConnection.Controls.Add(pictureBox1);
+            panelConnection.Controls.Add(labelConnectionState);
+            panelConnection.Controls.Add(label1);
+            panelConnection.Location = new Point(3, 3);
+            panelConnection.Name = "panelConnection";
+            panelConnection.Size = new Size(1059, 148);
+            panelConnection.TabIndex = 0;
+            panelConnection.Visible = false;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = Properties.Resources.nointernet;
+            pictureBox1.Location = new Point(3, 3);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(203, 139);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 1;
+            pictureBox1.TabStop = false;
+            // 
+            // labelConnectionState
+            // 
+            labelConnectionState.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            labelConnectionState.Font = new Font("Cairo", 14F, FontStyle.Bold, GraphicsUnit.Point);
+            labelConnectionState.Location = new Point(200, 74);
+            labelConnectionState.Name = "labelConnectionState";
+            labelConnectionState.Size = new Size(831, 56);
+            labelConnectionState.TabIndex = 0;
+            labelConnectionState.Text = "لقد فقدنا الاتصال بالخادم .... سوف نستعيد الاتصال بمجرد توفره";
+            // 
+            // label1
+            // 
+            label1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            label1.AutoSize = true;
+            label1.Font = new Font("Cairo", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.ForeColor = Color.Red;
+            label1.Location = new Point(821, 9);
+            label1.Name = "label1";
+            label1.Size = new Size(199, 56);
+            label1.TabIndex = 0;
+            label1.Text = "فُقد الاتصال..";
+            // 
+            // timer1
+            // 
+            timer1.Enabled = true;
+            timer1.Interval = 5000;
+            timer1.Tick += timer1_Tick;
             // 
             // Main
             // 
@@ -176,6 +237,10 @@
             WindowState = FormWindowState.Maximized;
             FormClosing += Main_FormClosing;
             flowLayoutPanel1.ResumeLayout(false);
+            panelContainer.ResumeLayout(false);
+            panelConnection.ResumeLayout(false);
+            panelConnection.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
@@ -190,5 +255,10 @@
         private Button buttonAbout;
         public Panel panelContainer;
         private ToolTip toolTip1;
+        private Panel panelConnection;
+        private Label labelConnectionState;
+        private Label label1;
+        private PictureBox pictureBox1;
+        private System.Windows.Forms.Timer timer1;
     }
 }

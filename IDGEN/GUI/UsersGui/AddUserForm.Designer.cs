@@ -35,6 +35,7 @@ namespace IDGEN.Gui.GuiUsers
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddUserForm));
             panel1 = new Panel();
             labelValidation = new Label();
             buttonCancel = new Button();
@@ -234,6 +235,7 @@ namespace IDGEN.Gui.GuiUsers
             toolTip1.SetToolTip(textBoxCollegeCode, "رمز الكلية يتكون من 4 مراتب");
             textBoxCollegeCode.TextChanged += textBoxEmail_TextChanged;
             textBoxCollegeCode.Enter += textBoxEmail_Enter;
+            textBoxCollegeCode.MouseLeave += textBoxCollegeCode_MouseLeave;
             // 
             // textBoxPassword
             // 
@@ -438,6 +440,7 @@ namespace IDGEN.Gui.GuiUsers
             toolTip1.SetToolTip(textBoxDepCode, "رمز القسم متكون من مرتبتين");
             textBoxDepCode.TextChanged += textBox6_TextChanged;
             textBoxDepCode.Enter += textBox6_Enter;
+            textBoxDepCode.MouseLeave += textBoxDepCode_MouseLeave;
             // 
             // textBoxDepName
             // 
@@ -561,13 +564,13 @@ namespace IDGEN.Gui.GuiUsers
             Controls.Add(panel1);
             Font = new Font("Cairo", 12F, FontStyle.Regular, GraphicsUnit.Point);
             FormBorderStyle = FormBorderStyle.FixedDialog;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(4, 6, 4, 6);
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "AddUserForm";
             RightToLeft = RightToLeft.Yes;
             RightToLeftLayout = true;
-            ShowIcon = false;
             ShowInTaskbar = false;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "اضافة / تعديل كلية";
@@ -591,7 +594,6 @@ namespace IDGEN.Gui.GuiUsers
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox textBoxName;
-        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textBoxEmail;
         private System.Windows.Forms.TextBox textBoxCollegeCode;
@@ -624,5 +626,6 @@ namespace IDGEN.Gui.GuiUsers
         private Label labelNoData;
         private Label labelValidation;
         private DataGridView mainDataGridView;
+        public GroupBox groupBox1;
     }
 }

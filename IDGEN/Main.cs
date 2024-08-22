@@ -1,6 +1,14 @@
+﻿using DocumentFormat.OpenXml.Drawing;
 using IDGEN.Code;
+using IDGEN.Data.EF;
+using IDGEN.Gui.GuiSettings;
+using IDGEN.Gui.StudnetGui;
+using IDGEN.GUI.GuiAbout;
 using IDGEN.GUI.HomeGui;
+using IDGEN.GUI.LogsGui;
+using IDGEN.GUI.StudnetGui;
 using IDGEN.GUI.UsersGui;
+using Microsoft.EntityFrameworkCore;
 namespace IDGEN
 {
     public partial class Main : Form
@@ -9,6 +17,9 @@ namespace IDGEN
         private PageManager pageManager;
         private static Main? _Main;
 
+        SettingsForm settingsForm;
+        private AboutBox boutBox;
+        private DataContext dbContext;
 
         // Constructors
         public Main()
@@ -24,6 +35,11 @@ namespace IDGEN
             // Load Home Page
             pageManager.LoadPage(new GUI.HomeGui.HomeUserControl());
             ChangeTextOfMainPage(buttonHome.Text);
+            SetRoles();
+
+            // 
+
+            dbContext = new DataContext();
 
         }
 
@@ -54,7 +70,7 @@ namespace IDGEN
 
         private void ChangeTextOfMainPage(string text)
         {
-           this. Text= text;
+            this.Text = text;
         }
 
         // Events
@@ -70,6 +86,8 @@ namespace IDGEN
                 Properties.Settings.Default.IsMaxScreen = false;
                 Properties.Settings.Default.Save();
             }
+
+            Application.Exit();
         }
 
         private void buttonHome_Click(object sender, EventArgs e)
@@ -86,22 +104,83 @@ namespace IDGEN
 
         private void buttonStudents_Click(object sender, EventArgs e)
         {
-            pageManager.LoadPage(new GUI.UsersGui.UsersUserControl());
+            pageManager.LoadPage(StudentUserControl.Instance(this));
             ChangeTextOfMainPage(buttonStudents.Text);
         }
 
         private void buttonLogs_Click(object sender, EventArgs e)
         {
-            pageManager.LoadPage(new GUI.UsersGui.UsersUserControl());
+            pageManager.LoadPage(LogsUserControl.Instance(this));
             ChangeTextOfMainPage(buttonLogs.Text);
         }
 
         private void buttonSettings_Click(object sender, EventArgs e)
         {
+            // Open second form only if it dose not open
+            if (settingsForm == null || settingsForm.IsDisposed)
+            {
+                settingsForm = new SettingsForm();
+                if (!settingsForm.IsDisposed)
+                {
+                    settingsForm.Show();
+                }
+            }
+            else
+            {
+                settingsForm.Focus();
+            }
         }
 
         private void buttonAbout_Click(object sender, EventArgs e)
         {
+            // Open second form only if it dose not open
+            if (boutBox == null || boutBox.IsDisposed)
+            {
+                boutBox = new AboutBox();
+                if (!boutBox.IsDisposed)
+                {
+                    boutBox.Show();
+                }
+            }
+            else
+            {
+                boutBox.Focus();
+            }
+        }
+
+        private void SetRoles()
+        {
+            if (!Code.LoggedUser.IsAdmin)
+            {
+                buttonUsers.Visible = false;
+                buttonLogs.Visible = false;
+            }
+        }
+
+        private async void timer1_Tick(object sender, EventArgs e)
+        {
+
+            // No Connection
+            var IsConnect = await dbContext.Database.CanConnectAsync();
+            if (!IsConnect)
+            {
+                panelContainer.Enabled = false;
+                flowLayoutPanel1.Enabled = false;
+
+                panelConnection.Visible = true;
+            }
+
+            if (IsConnect) // Connect
+            {
+
+
+                panelContainer.Enabled = true;
+                flowLayoutPanel1.Enabled = true;
+
+                panelConnection.Visible = false;
+
+            }
+
         }
     }
 }

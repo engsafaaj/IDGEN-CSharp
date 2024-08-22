@@ -36,11 +36,12 @@ namespace IDGEN.Gui.GuiLoading
             // pictureBox1
             // 
             pictureBox1.BackColor = Color.White;
+            pictureBox1.Cursor = Cursors.WaitCursor;
             pictureBox1.Dock = DockStyle.Fill;
             pictureBox1.Image = Properties.Resources.Loading;
             pictureBox1.Location = new Point(0, 0);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(163, 91);
+            pictureBox1.Size = new Size(90, 90);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
@@ -49,7 +50,8 @@ namespace IDGEN.Gui.GuiLoading
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(163, 91);
+            AutoSize = true;
+            ClientSize = new Size(90, 90);
             ControlBox = false;
             Controls.Add(pictureBox1);
             FormBorderStyle = FormBorderStyle.None;

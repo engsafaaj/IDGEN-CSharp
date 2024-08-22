@@ -128,6 +128,72 @@ namespace IDGEN.Data.Migrations
                     b.ToTable("Logs");
                 });
 
+            modelBuilder.Entity("IDGEN.Core.Studnets", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("AddDate")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AdmissionChannel")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AdmissionYear")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("CollegesId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DepartmentCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EnrollmentOrder")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FacultyCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FullID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Gender")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("StudyLevel")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("StudySystem")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UniversityCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CollegesId");
+
+                    b.ToTable("Studnets");
+                });
+
             modelBuilder.Entity("IDGEN.Core.CollegeDep", b =>
                 {
                     b.HasOne("IDGEN.Core.Colleges", "Colleges")
@@ -139,9 +205,22 @@ namespace IDGEN.Data.Migrations
                     b.Navigation("Colleges");
                 });
 
+            modelBuilder.Entity("IDGEN.Core.Studnets", b =>
+                {
+                    b.HasOne("IDGEN.Core.Colleges", "Colleges")
+                        .WithMany("Studnets")
+                        .HasForeignKey("CollegesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Colleges");
+                });
+
             modelBuilder.Entity("IDGEN.Core.Colleges", b =>
                 {
                     b.Navigation("CollegeDep");
+
+                    b.Navigation("Studnets");
                 });
 #pragma warning restore 612, 618
         }
